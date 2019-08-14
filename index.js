@@ -28,8 +28,8 @@ module.exports = async function ewelinkReboot({ region, email, password, device,
   }
 
   const ewelink = api || (() => {
-    if (!password) throw new Error('Password not found');
     if (!email) throw new Error('Email not found');
+    if (!password) throw new Error('Password not found');
     if (!emailRegex({exact: true}).test(email)) throw new Error('Invalid email address');
     return new EWeLink({ region, email, password })
   })();
