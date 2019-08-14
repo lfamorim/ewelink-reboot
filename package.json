@@ -1,5 +1,5 @@
 {
-  "name": "reboot",
+  "name": "ewelink-reboot",
   "version": "1.0.0",
   "description": "Cut and restore force if a device goes offline",
   "main": "index.js",
