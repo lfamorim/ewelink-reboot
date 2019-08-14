@@ -11,7 +11,7 @@ function pingAddress(addr) {
   }));
 }
 
-async function rebootWhenDead(ewelink, isAlive, onOffInterval = 10000) {
+async function rebootWhenDead(device, ewelink, isAlive, onOffInterval = 10000) {
   if (isAlive) return false;
 
   await ewelink.setDevicePowerState(device, 'off');
@@ -47,5 +47,5 @@ module.exports = async function ewelinkReboot({ region, email, password, device,
       'none'}.`);
 
   const isAlive = await pingAddress(addr);
-  return rebootWhenDead(ewelink, isAlive, onOffInterval);
+  return rebootWhenDead(target.deviceid, ewelink, isAlive, onOffInterval);
 }

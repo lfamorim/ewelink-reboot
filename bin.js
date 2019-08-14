@@ -23,7 +23,8 @@ if (enviromentPassword) {
 
 program
   .version(require('./package.json').version)
-  .arguments('<addr> <device>')
+  .arguments('<addr> <device>', { isDefault: true })
+  .option('-e --email <email>', 'Email address to eWeLink.')
   .option('-e --email <email>', 'Email address to eWeLink.')
   .option('-p --password <password>', 'Your password to eWeLink.')
   .option('-r --region <region>', "The API region you use, valid ones are 'us', 'eu' and 'cn'.")
@@ -59,7 +60,10 @@ program
 program.parse(process.argv);
 
 function sleepUntil(useInterval) {
-  return useInterval ? new Promise(resolve => setTimeout(() => resolve(true), useInterval)) : false;
+  return useInterval ? new Promise(resolve => {
+    log(`Waiting until ${new Date(Date.now() + useInterval)}`);
+    setTimeout(() => resolve(true), useInterval);
+  }) : false;
 }
 
 function intervalParser(loop) {
@@ -74,6 +78,6 @@ function intervalParser(onOffInterval) {
 
 async function checkOnWeLink(email, password, region, addr, device, onOffInterval) {
   const isRebooted = await ewelinkReboot({ email, password, region, addr, device, onOffInterval });
-  log(isRebooted ? `The device ${device}  has been restarted.` : `The device ${device} is active, not restarted.`);
+  log(isRebooted ? `The device ${device} has been restarted.` : `The device ${device} is active, not restarted.`);
   return isRebooted;
 }
