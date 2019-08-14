@@ -25,7 +25,6 @@ program
   .version(require('./package.json').version)
   .arguments('<addr> <device>', { isDefault: true })
   .option('-e --email <email>', 'Email address to eWeLink.')
-  .option('-e --email <email>', 'Email address to eWeLink.')
   .option('-p --password <password>', 'Your password to eWeLink.')
   .option('-r --region <region>', "The API region you use, valid ones are 'us', 'eu' and 'cn'.")
   .option('-l, --loop <loop>', "Run the program in loop, checking.")
