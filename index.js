@@ -11,12 +11,19 @@ function pingAddress(addr) {
   }));
 }
 
-async function rebootWhenDead(device, ewelink, isAlive, onOffInterval = 10000) {
-  if (isAlive) return false;
+function assertAPIResponse(response) {
+  const { error = null } = response;
+  if (!error) return response;
+  throw new Error(error);
+}
 
+async function rebootWhenDead(device, ewelink, isAlive, onOffInterval = 10000) {
+  // if (isAlive) return false;
+  const { error } = assertAPIResponse(await ewelink.login());
+  if (error) { throw new Error(error); }
   await ewelink.setDevicePowerState(device, 'off');
   await new Promise((resolve) => setTimeout(async () => {
-    resolve(await ewelink.setDevicePowerState(device, 'on'));
+    resolve(assertAPIResponse(await ewelink.setDevicePowerState(device, 'on')));
   }), onOffInterval);
 
   return true;
@@ -34,12 +41,9 @@ module.exports = async function ewelinkReboot({ region, email, password, device,
     return new EWeLink({ region, email, password })
   })();
 
-  const login = await ewelink.login();
-  if (typeof login === 'object' && login.error) {
-    throw new Error(login.msg || `${login.error} Authentication error`);
-  }
+  assertAPIResponse(await ewelink.login());
 
-  const devices = await ewelink.getDevices();
+  const devices = assertAPIResponse(await ewelink.getDevices());
   const target = Array.isArray(devices) ? devices.find(({deviceid, name}) => deviceid == device || 
     name == device) : undefined;
   if (!target) throw new Error(`Can't find that device, available are: ${Array.isArray(devices) ?

@@ -1,6 +1,6 @@
 {
   "name": "ewelink-reboot",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Cut and restore force if a device goes offline",
   "main": "index.js",
   "scripts": {
@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/lfamorim/ewelink-reboot#readme",
   "dependencies": {
-    "commander": "^3.0.0",
-    "dotenv": "^8.0.0",
+    "commander": "^3.0.1",
+    "dotenv": "^8.1.0",
     "email-regex": "^4.0.0",
-    "ewelink-api": "^1.3.0",
+    "ewelink-api": "git+https://github.com/bipbop/ewelink-api.git",
     "is-domain-name": "^1.0.1",
     "is-ip": "^3.1.0",
     "ping": "^0.2.2"
