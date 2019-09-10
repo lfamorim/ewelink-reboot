@@ -18,7 +18,7 @@ function assertAPIResponse(response) {
 }
 
 async function rebootWhenDead(device, ewelink, isAlive, onOffInterval = 10000) {
-  // if (isAlive) return false;
+  if (isAlive) return false;
   const { error } = assertAPIResponse(await ewelink.login());
   if (error) { throw new Error(error); }
   await ewelink.setDevicePowerState(device, 'off');

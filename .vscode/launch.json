@@ -10,7 +10,7 @@
       "name": "Launch Program",
       "program": "${workspaceFolder}/bin.js",
       "args": [
-        "deviceHostOrAddress", "deviceNameOrId"
+        "java", "10006f8e9e"
       ]
     }
   ]
