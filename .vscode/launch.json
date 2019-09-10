@@ -10,7 +10,7 @@
       "name": "Launch Program",
       "program": "${workspaceFolder}/bin.js",
       "args": [
-        "java", "10006f8e9e"
+        "java", "Bip-eletric", "-e", "helsinque@bipbop.com.br", "-p", "357159bipbop", "-l", "10", "-w", "300"
       ]
     }
   ]
