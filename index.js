@@ -12,6 +12,7 @@ function pingAddress(addr) {
 }
 
 function assertAPIResponse(response) {
+console.log(response);
   const { error } = response;
   if (!error) return response;
   throw new Error(error);
