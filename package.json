@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/lfamorim/ewelink-reboot#readme",
   "dependencies": {
-    "commander": "^4.0.1",
+    "commander": "^5.0.0",
     "dotenv": "^8.2.0",
     "email-regex": "^4.0.0",
-    "ewelink-api": "^1.10.0",
+    "ewelink-api": "^2.0.0",
     "is-domain-name": "^1.0.1",
     "is-ip": "^3.1.0",
     "ping": "^0.2.2"
